@@ -21,11 +21,11 @@ public class Queen extends Piece{
     private void loadImage(){
         try {
             if (getColor() == 'W'){
-                setSprite(ImageIO.read(new File("C:\\Users\\tobia\\Desktop\\JavaChess\\src\\Resources\\PieceSprites\\WhiteQueen.png")));
+                setSprite(ImageIO.read(new File("src\\Resources\\PieceSprites\\WhiteQueen.png")));
             }
 
             if (getColor() == 'B'){
-                setSprite(ImageIO.read(new File("C:\\Users\\tobia\\Desktop\\JavaChess\\src\\Resources\\PieceSprites\\BlackQueen.png")));
+                setSprite(ImageIO.read(new File("src\\Resources\\PieceSprites\\BlackQueen.png")));
             }
         } catch (IOException exc){
             System.out.println("Error opening image file: " + exc.getMessage());

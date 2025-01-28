@@ -21,11 +21,11 @@ public class Rook extends Piece{
     private void loadImage(){
         try {
             if (getColor() == 'W'){
-                setSprite(ImageIO.read(new File("C:\\Users\\tobia\\Desktop\\JavaChess\\src\\Resources\\PieceSprites\\WhiteRook.png")));
+                setSprite(ImageIO.read(new File("src\\Resources\\PieceSprites\\WhiteRook.png")));
             }
 
             if (getColor() == 'B'){
-                setSprite(ImageIO.read(new File("C:\\Users\\tobia\\Desktop\\JavaChess\\src\\Resources\\PieceSprites\\BlackRook.png")));
+                setSprite(ImageIO.read(new File("src\\Resources\\PieceSprites\\BlackRook.png")));
             }
         } catch (IOException exc){
             System.out.println("Error opening image file: " + exc.getMessage());
