@@ -83,4 +83,8 @@ public abstract class Piece {
     public ArrayList<Point> getLegalTiles(Piece[][] boardPieces){
         return new ArrayList<Point>();
     }
+
+    public boolean isPromotionAvailable(){
+        return false;
+    }
 }

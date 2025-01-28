@@ -3,7 +3,9 @@ package src;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 import src.Pieces.Piece;
+import src.Pieces.Queen;
 import src.Boards.EightByEightSquare;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
@@ -124,10 +126,10 @@ public class GameLogic extends JPanel implements ActionListener, KeyListener, Mo
 
                 if (selectedPiece != null) {
                     if (clickedPiece == null) {
-                        handleMove(selectedPiece, col, row, (selectedPiece.getColor() == 'W') ? blackPieces : whitePieces);
+                        handleMove(selectedPiece, col, row, (selectedPiece.getColor() == 'W') ? blackPieces : whitePieces, (selectedPiece.getColor() == 'W') ? whitePieces : blackPieces);
                         selectedTile = null;
                     } else if (clickedPiece.getColor() != selectedPiece.getColor()) {
-                        handleMove(selectedPiece, col, row, (selectedPiece.getColor() == 'W') ? blackPieces : whitePieces);
+                        handleMove(selectedPiece, col, row, (selectedPiece.getColor() == 'W') ? blackPieces : whitePieces, (selectedPiece.getColor() == 'W') ? whitePieces : blackPieces);
                         selectedTile = null;
                     } else {
                         if(clickedPiece != null){
@@ -197,7 +199,7 @@ public class GameLogic extends JPanel implements ActionListener, KeyListener, Mo
     }
 
     //handles the event that a piece moves
-    private void handleMove(Piece piece, int col, int row, ArrayList<Piece> opponentPieces) {
+    private void handleMove(Piece piece, int col, int row, ArrayList<Piece> opponentPieces, ArrayList<Piece> friendlyPieces) {
         ArrayList<Point> legalTiles = piece.getLegalTiles(boardArray);
 
         boolean isLegalMove = legalTiles.stream().anyMatch(tile -> tile.x == col && tile.y == row);
@@ -215,6 +217,16 @@ public class GameLogic extends JPanel implements ActionListener, KeyListener, Mo
         }
 
         piece.setPos(col, row);
+
+        if (piece.isPromotionAvailable()){
+            Piece promotedPiece = new Queen(piece.getColor(), piece.getPos().x, piece.getPos().y);
+            friendlyPieces.remove(piece);
+            friendlyPieces.add(promotedPiece);
+            boardArray[row][col] = promotedPiece;
+        }else{
+            boardArray[row][col] = piece;
+        }
+
         resetBoardArray();
         updateBoardArray(whitePieces);
         updateBoardArray(blackPieces);

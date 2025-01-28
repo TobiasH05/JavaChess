@@ -66,4 +66,17 @@ public class Pawn extends Piece{
     
         return legalTiles;
     }
+
+    @Override
+    public boolean isPromotionAvailable(){
+        if (getColor() == 'W' && getPos().getY() == 0){
+            return true;
+        }
+
+        if (getColor() == 'B' && getPos().getY() == 7){
+            return true;
+        }
+
+        return false;
+    }
 }
