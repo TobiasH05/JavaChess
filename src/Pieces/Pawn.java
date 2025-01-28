@@ -1,6 +1,5 @@
 package src.Pieces;
 
-import src.Type;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,12 +7,9 @@ import java.awt.Point;
 import javax.imageio.ImageIO;
 
 public class Pawn extends Piece{
-    Type type;
-
     //constructor
     public Pawn(char color, int x, int y){
         super(color, x, y);
-        type = Type.PAWN;
         loadImage();
     }
 

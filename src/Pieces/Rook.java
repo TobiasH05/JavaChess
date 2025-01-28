@@ -5,15 +5,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Point;
 import javax.imageio.ImageIO;
-import src.Type;
 
 public class Rook extends Piece{
-    Type type;
-
     //constructor
     public Rook(char color, int x, int y){
         super(color, x, y);
-        type = Type.ROOK;
         loadImage();
     }
 

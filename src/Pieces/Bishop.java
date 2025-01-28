@@ -6,15 +6,10 @@ import java.util.ArrayList;
 import java.awt.Point;
 import javax.imageio.ImageIO;
 
-import src.Type;
-
 public class Bishop extends Piece{
-    Type type;
-
     //constructor
     public Bishop(char color, int x, int y){
         super(color, x, y);
-        type = Type.BISHOP;
         loadImage();
     }
 

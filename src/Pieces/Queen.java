@@ -5,15 +5,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Point;
 import javax.imageio.ImageIO;
-import src.Type;
 
 public class Queen extends Piece{
-    Type type;
-
     //constructor
     public Queen(char color, int x, int y){
         super(color, x, y);
-        type = Type.QUEEN;
         loadImage();
     }
 

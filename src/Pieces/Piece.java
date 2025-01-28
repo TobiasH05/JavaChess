@@ -5,14 +5,12 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import src.Type;
 import src.GameLogic;
 
 public abstract class Piece {
     private char color;
     private Point pos;
     private BufferedImage sprite;
-    private Type type;
     private float currentX;
     private float currentY;
 
@@ -40,10 +38,6 @@ public abstract class Piece {
 
     public BufferedImage getSprite(){
         return sprite;
-    }
-
-    public Type getType(){
-        return type;
     }
 
     public float getCurrentX(){

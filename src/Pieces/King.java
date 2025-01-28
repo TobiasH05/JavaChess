@@ -5,15 +5,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Point;
 import javax.imageio.ImageIO;
-import src.Type;
 
 public class King extends Piece{
-    Type type;
-
     //constructor
     public King(char color, int x, int y){
         super(color, x, y);
-        type = Type.KING;
         loadImage();
     }
 
