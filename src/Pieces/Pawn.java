@@ -34,20 +34,40 @@ public class Pawn extends Piece{
 
     @Override
     public ArrayList<Point> getLegalTiles(Piece[][] boardPieces){
-        ArrayList<Point> legalTiles = new ArrayList<Point>();
-
-        for (int i = 0; i < boardPieces.length; i++){
-            for (int j = 0; j < boardPieces[i].length; j++){
-                legalTiles.add(new Point(i, j));
+        ArrayList<Point> legalTiles = new ArrayList<>();
+        int x = getPos().x;
+        int y = getPos().y;
+        int rows = boardPieces.length;
+        int cols = boardPieces[0].length;
+        char color = getColor();
+    
+        int direction = (color == 'W') ? -1 : 1;
+    
+        if (y + direction >= 0 && y + direction < rows) {
+            if (boardPieces[y + direction][x] == null) {
+                legalTiles.add(new Point(x, y + direction));
             }
         }
-
-        if (getColor() == 'W'){
-
-        }else{
-            
+    
+        if ((color == 'W' && y == 6) || (color == 'B' && y == 1)) {
+            if (boardPieces[y + direction][x] == null && boardPieces[y + 2 * direction][x] == null) {
+                legalTiles.add(new Point(x, y + 2 * direction));
+            }
         }
-
+    
+        int[] captureOffsets = {-1, 1};
+        for (int offset : captureOffsets) {
+            int newX = x + offset;
+            int newY = y + direction;
+    
+            if (newX >= 0 && newX < cols && newY >= 0 && newY < rows) {
+                Piece targetPiece = boardPieces[newY][newX];
+                if (targetPiece != null && targetPiece.getColor() != color) {
+                    legalTiles.add(new Point(newX, newY));
+                }
+            }
+        }
+    
         return legalTiles;
     }
 }
