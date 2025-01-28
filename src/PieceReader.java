@@ -46,20 +46,27 @@ public class PieceReader {
             int y = Integer.parseInt(pieceAttrs[3]);
 
             if (arrayListColor == color){
-                if (type.equals("Pawn")){
-                    pieces.add(new Pawn(color, x, y));
-                }else if (type.equals("Rook")){
-                    pieces.add(new Rook(color, x, y));
-                }else if (type.equals("Knight")){
-                    pieces.add(new Knight(color, x, y));
-                }else if (type.equals("Bishop")){
-                    pieces.add(new Bishop(color, x, y));
-                }else if (type.equals("Queen")){
-                    pieces.add(new Queen(color, x, y));
-                }else if (type.equals("King")){
-                    pieces.add(new King(color, x, y));
-                }else{
-                    throw new IllegalArgumentException("Name isn't a valid piece type: " + type);
+                switch (type) {
+                    case "Pawn":
+                        pieces.add(new Pawn(color, x, y));
+                        break;
+                    case "Rook":
+                        pieces.add(new Rook(color, x, y));
+                        break;
+                    case "Knight":
+                        pieces.add(new Knight(color, x, y));
+                        break;
+                    case "Bishop":
+                        pieces.add(new Bishop(color, x, y));
+                        break;
+                    case "Queen":
+                        pieces.add(new Queen(color, x, y));
+                        break;
+                    case "King":
+                        pieces.add(new King(color, x, y));
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unknown piece type: " + type);
                 }
             }
         }

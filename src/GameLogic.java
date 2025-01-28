@@ -3,9 +3,7 @@ package src;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
-import src.Pieces.Piece;
-import src.Pieces.Queen;
+import src.Pieces.*;
 import src.Boards.EightByEightSquare;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
