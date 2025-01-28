@@ -32,6 +32,7 @@ public class Rook extends Piece{
         }
     }
 
+    @Override
     public ArrayList<Point> getLegalTiles(Piece[][] boardPieces){
         ArrayList<Point> legalTiles = new ArrayList<Point>();
         int x = getPos().x;
@@ -86,8 +87,6 @@ public class Rook extends Piece{
                 legalTiles.add(new Point(i, y));
             }
         }
-
-        System.out.println(legalTiles.toString());
 
         return legalTiles;
     }

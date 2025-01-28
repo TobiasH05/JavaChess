@@ -32,6 +32,7 @@ public class King extends Piece{
         }
     }
 
+    @Override
     public ArrayList<Point> getLegalTiles(Piece[][] boardPieces){
         ArrayList<Point> legalTiles = new ArrayList<Point>();
 

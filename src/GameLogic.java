@@ -198,6 +198,14 @@ public class GameLogic extends JPanel implements ActionListener, KeyListener, Mo
 
     //handles the event that a piece moves
     private void handleMove(Piece piece, int col, int row, ArrayList<Piece> opponentPieces) {
+        ArrayList<Point> legalTiles = piece.getLegalTiles(boardArray);
+
+        boolean isLegalMove = legalTiles.stream().anyMatch(tile -> tile.x == col && tile.y == row);
+
+        if (!isLegalMove){
+            return;
+        }
+        
         Piece targetPiece = boardArray[row][col];
 
         if (targetPiece != null) {

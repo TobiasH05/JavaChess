@@ -3,6 +3,8 @@ package src.Pieces;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 import src.Type;
 import src.GameLogic;
 
@@ -82,5 +84,9 @@ public abstract class Piece {
     public void setCurrentPos(float x, float y){
         currentX = x;
         currentY = y;
+    }
+
+    public ArrayList<Point> getLegalTiles(Piece[][] boardPieces){
+        return new ArrayList<Point>();
     }
 }
