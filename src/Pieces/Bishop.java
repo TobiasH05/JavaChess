@@ -17,11 +17,11 @@ public class Bishop extends Piece{
     private void loadImage(){
         try {
             if (getColor() == 'W'){
-                setSprite(ImageIO.read(new File("src\\Resources\\PieceSprites\\WhiteBishop.png")));
+                setSprite(ImageIO.read(new File("src/Resources/PieceSprites/WhiteBishop.png")));
             }
 
             if (getColor() == 'B'){
-                setSprite(ImageIO.read(new File("src\\Resources\\PieceSprites\\BlackBishop.png")));
+                setSprite(ImageIO.read(new File("src/Resources/PieceSprites/BlackBishop.png")));
             }
         } catch (IOException exc){
             System.out.println("Error opening image file: " + exc.getMessage());
