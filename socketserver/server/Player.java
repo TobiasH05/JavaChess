@@ -27,10 +27,9 @@ public class Player {
             builder = new MessageBuilder((byte) 8,(byte) 1);
 
             byte[] isWhiteMessage = new byte[8];
-            isWhiteMessage[0] = (byte) (isWhite ? 0 : 1);
+            isWhiteMessage[0] = (byte) (this.isWhite ? 0 : 1);
 
             byte[] msg = builder.build(isWhiteMessage);
-            System.out.println(Arrays.toString(msg));
 
             send(msg);
 
@@ -39,9 +38,7 @@ public class Player {
         }
     }
 
-
     public void send(byte[] content) {
-
         byte[] message = builder.build(content);
 
         try {
@@ -50,7 +47,6 @@ public class Player {
         } catch (Exception e) {
             System.out.println("failed to send");
         }
-
     }
 
     public byte[] recv() {
