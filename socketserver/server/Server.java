@@ -1,35 +1,38 @@
 package server;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 public class Server {
 
     private int port;
     private ServerSocket serverSocket;
-    private Socket sock;
-    private PrintWriter out;
-    private BufferedReader in;
+
+    private Player player1;
+    private Player player2;
+
     
     public Server(int port) {
         this.port = port;
     }
 
 
+    private void gameLoop() {
+
+    }
+
+
     public void start() {
         try {
             serverSocket = new ServerSocket(this.port);
-            sock = serverSocket.accept();
 
+            player1 = new Player(serverSocket.accept(), true);
+            player2 = new Player(serverSocket.accept(), false);
 
-            out = new PrintWriter(sock.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(sock.getInputStream()));;
-            String data = in.readLine();
+            byte[] message = player1.recv();
 
-            System.out.println(data);
+            player2.send(message);
+
+            gameLoop();
 
             stop();
         } catch (Exception e) {
@@ -41,7 +44,6 @@ public class Server {
     public void stop() {
         try {
             serverSocket.close();
-            sock.close();
 
         } catch (Exception e) {
             System.out.println("Fuck");
