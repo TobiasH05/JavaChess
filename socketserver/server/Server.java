@@ -1,9 +1,7 @@
 package server;
-
 import java.net.ServerSocket;
 
 public class Server {
-
     private int port;
     private ServerSocket serverSocket;
     private boolean running = true;
@@ -11,7 +9,6 @@ public class Server {
     private Player player1;
     private Player player2;
 
-    
     public Server(int port) {
         this.port = port;
     }
